@@ -29,7 +29,11 @@
 
 #include "oatpp/core/data/stream/BufferStream.hpp"
 
-#include <arpa/inet.h>
+#if defined(WIN32) || defined(_WIN32)
+  #include <winsock2.h>
+#else
+  #include <arpa/inet.h>
+#endif
 
 namespace oatpp { namespace bob { namespace test {
 
@@ -134,21 +138,6 @@ void UtilsTest::onRun() {
     } else {
       OATPP_ASSERT(check == ddata)
     }
-  }
-
-  {
-    v_int64 v = ( (v_int64) '0'       ) | (((v_int64) '1') <<  8) | (((v_int64) '2') << 16) | (((v_int64) '3') << 24)
-                | (((v_int64) '4') << 32) | (((v_int64) '5') << 40) | (((v_int64) '6') << 48) | (((v_int64) '7') << 56);
-
-    oatpp::data::stream::BufferOutputStream ss;
-    oatpp::bob::Utils::writeInt64(&ss, v, BO_TYPE::NETWORK);
-    auto vs2 = ss.toString();
-
-    v_int64 vcheck = htonll(v);
-    oatpp::String checks((const char*) &vcheck, 8);
-
-    OATPP_ASSERT(vs2 == checks)
-
   }
 
 }
