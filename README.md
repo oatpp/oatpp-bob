@@ -1,4 +1,4 @@
-# oatpp-bob
+# oatpp-bob [![Build Status](https://dev.azure.com/lganzzzo/lganzzzo/_apis/build/status/oatpp.oatpp-bob?branchName=main)](https://dev.azure.com/lganzzzo/lganzzzo/_build/latest?definitionId=33&branchName=main)
 
 *(oatpp-BinaryOBject - BOB)*  
 Object-Mapper for binary serialization/deserialization.
