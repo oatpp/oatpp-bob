@@ -91,6 +91,11 @@ public:
      */
     std::vector<std::string> enabledInterpretations = {};
 
+    /**
+     * Pointer to anything extra.
+     */
+    void* extra = nullptr;
+
   };
 public:
   typedef void (*SerializerMethod)(Serializer*,
